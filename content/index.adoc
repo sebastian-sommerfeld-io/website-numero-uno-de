@@ -28,7 +28,7 @@ scusi@numero-uno.de
 == #8 - Was ich nicht mehr weiß ist nie passiert
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
-== #9 - Schön rausgeputzt hat nix genutzt
+== #9 - Schön rausgeputzt, hat nix genutzt
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
 == #10 - Ein Veterano zwei Veteranen
