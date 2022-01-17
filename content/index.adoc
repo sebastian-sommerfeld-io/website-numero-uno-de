@@ -1,6 +1,6 @@
 = Numero Uno
-// https://docs.asciidoctor.org/reveal.js-converter/latest/
-:revealjs_theme: moon
+// https://revealjs.com/themes/
+:revealjs_theme: night
 
 scusi@numero-uno.de
 
