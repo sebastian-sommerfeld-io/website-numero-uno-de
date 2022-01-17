@@ -19,13 +19,13 @@ scusi@numero-uno.de
 == #5 - ???
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
-== #6 - ???
+== #6 - Ein Bier sollte da Klarheit bringen
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
-== #7 - Ein Bier sollte da Klarheit bringen
+== #7 - Was ich nicht mehr weiß ist nie passiert
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
-== #8 - Was ich nicht mehr weiß ist nie passiert
+== #8 - Wo saufen eine Ehre ist, kann kotzen keine Schande sein
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
 == #9 - Schön rausgeputzt, hat nix genutzt
