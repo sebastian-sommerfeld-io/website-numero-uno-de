@@ -1,0 +1,138 @@
+#!/usr/bin/env groovy
+
+final String KEEP_BUILDS="8"
+final String FTP_HOST="w00f8074.kasserver.com"
+
+/**
+ * The actual pipeline
+ * todo: Use official docker image -> https://gitlab.com/antora/docker-antora
+ */
+pipeline {
+    agent {
+        docker { image "node:16-bullseye" } // bullseye = debian 11
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: "$KEEP_BUILDS", artifactNumToKeepStr: "$KEEP_BUILDS"))
+    }
+
+    triggers {
+        // https://crontab.guru/#10_4_*_*_*
+        cron('0 5 * * *')
+    }
+
+    stages {
+        stage("verify") {
+            parallel {
+                stage('info') {
+                    steps {
+                        sh 'printenv'
+                        sh "whoami"
+                        echo "Running on Node ${NODE_LABELS}"
+                        echo "Workspace = ${WORKSPACE}"
+                        echo "node --version"
+                        echo "npm --version"
+                    }
+                }
+                // todo move step to shared library
+                // todo add shared library to jenkins
+                stage("lint::Jenkinsfile") {
+                    steps {
+                        sh '''
+                            apt-get update
+                            apt-get install -y openjdk-11-jre-headless
+                            npm install -g npm-groovy-lint --save
+
+                            pwd
+                            ls
+
+                            npm-groovy-lint
+                        '''
+                    }
+                }
+                // todo move step to shared library
+                // todo add shared library to jenkins
+                stage("lint::yaml") {
+                    steps {
+                        sh '''
+                            npm install -g --save-dev yaml-lint
+                            
+                            pwd
+                            ls
+                            
+                            yamllint *.yml
+                            #yamllint *.yaml
+                        '''
+                    }
+                }
+                // todo move step to shared library
+                // todo add shared library to jenkins
+                stage("lint::folders") {
+                    steps {
+                        sh '''
+                            npm install --global folderslint
+                            
+                            pwd
+                            ls
+                            
+                            folderslint
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage("prepare") {
+            parallel {
+                stage("prepare::install-node-modules") {
+                    steps {
+                        sh "npm install --global asciidoctor @asciidoctor/reveal.js"
+
+                        // Install reveal to publish with landingpage
+                        sh "npm install reveal.js@4.2.1"
+                    }
+                }
+                stage("prepare::install-ftp-client") {
+                    steps {
+                        sh '''
+                            apt-get update
+                            apt-get install -y ncftp
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage("build::landing-page") {
+            steps {
+                sh "asciidoctor-revealjs -a revealjsdir=assets/reveal.js content/index.adoc"
+                sh "mkdir -p target/content"
+                sh "mv content/index.html target/content/index.html"
+                sh "mkdir -p target/content/assets"
+                sh "cp -a node_modules/reveal.js target/content/assets"
+                sh "cp -a content/images target/content"
+            }
+        }
+
+        stage("deploy::clear-webspace") {
+            steps {
+                echo 'todo ...' // todo
+            }
+        }
+
+        stage("deploy::landing-page") {
+            steps {
+                dir("target/content") {
+                    // https://www.ncftp.com/ncftp/doc/ncftpput.html
+
+                    sh "pwd"
+                    sh "ls"
+
+                    withCredentials([usernamePassword(credentialsId: 'numero-uno-ftp', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                        sh "ncftpput -R -v -u ${USER} -p ${PASS} ${FTP_HOST} / *"
+                    }
+                }
+            }
+        }
+    }
+}

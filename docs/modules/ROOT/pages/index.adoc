@@ -1,0 +1,9 @@
+= Website Numero Uno Docs Startpage
+Sebastian Sommerfeld <sebastian@sommerfeld.io>
+:url-project: https://gitlab.com/sommerfeld.sebastian/website-numero-uno-de
+:url-ci-pipelines: {url-project}/pipelines
+:img-ci-status: {url-project}/badges/main/pipeline.svg
+
+image:{img-ci-status}[CI Status (GitLab CI), link={url-ci-pipelines}]
+
+Website contents for www.numero-uno.de

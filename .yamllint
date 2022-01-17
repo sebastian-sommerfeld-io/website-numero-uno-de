@@ -1,0 +1,12 @@
+---
+extends: default
+
+ignore: |
+  node_modules
+  .vagrant
+  target
+
+rules:
+  line-length:
+    level: warning
+    allow-non-breakable-inline-mappings: true

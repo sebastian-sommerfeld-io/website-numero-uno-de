@@ -1,0 +1,8 @@
+---
+name: website-numero-uno-docs
+title: Website Numero Uno Docs
+version: main
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/api-docs-bash/nav.adoc

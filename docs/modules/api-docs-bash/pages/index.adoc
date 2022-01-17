@@ -1,0 +1,23 @@
+= API Docs: Bash Scripts
+Jenkins Pipeline <sebastian@sommerfeld.io>
+
+The full package documentation for all bash scripts of this project. All scripts are written for the link:https://en.wikipedia.org/wiki/Bash_(Unix_shell)[Bash] shell.
+
+All scripts expect certain variables to be present. These variables are all in conjunction with coloring the console output. To use the variables, simply add these lines to your users .bashrc file.
+
+[source, bash]
+----
+export LOG_DONE="[\e[32mDONE\e[0m]"
+export LOG_ERROR="[\e[1;31mERROR\e[0m]"
+export LOG_INFO="[\e[34mINFO\e[0m]"
+export LOG_WARN="[\e[93mWARN\e[0m]"
+
+export Y="\e[93m" # yellow
+export P="\e[35m" # pink
+export D="\e[0m"  # default (= white)
+----
+
+== Bash Scripts
+// From this point down: generated content only ...
+
+* xref:run-local.adoc[run-local.sh]

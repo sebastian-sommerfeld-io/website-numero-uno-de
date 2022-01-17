@@ -1,0 +1,15 @@
+---
+tasks:
+  - init: |
+      export LOG_DONE="[\e[32mDONE\e[0m]" && \
+      export LOG_ERROR="[\e[1;31mERROR\e[0m]" && \
+      export LOG_INFO="[\e[34mINFO\e[0m]" && \
+      export LOG_WARN="[\e[93mWARN\e[0m]" && \
+      export Y="\e[93m" && \
+      export P="\e[35m" && \
+      export D="\e[0m" && \
+      sudo apt-get install -y shellcheck && \
+      sudo apt-get install -y yamllint
+
+# https://www.gitpod.io/docs/getting-started
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/

@@ -1,0 +1,31 @@
+---
+image: docker:stable
+
+stages:
+  - verify
+
+yamllint:
+  image: registry.gitlab.com/pipeline-components/yamllint:latest
+  stage: verify
+  except:
+    - tags
+  script:
+    - yamllint .
+
+lint-directory-structure:
+  image: node:latest
+  stage: verify
+  before_script:
+    - npm install --global folderslint
+  script:
+    - folderslint
+
+shell-check:
+  image: koalaman/shellcheck-alpine:stable
+  stage: verify
+  except:
+    - tags
+  before_script:
+    - shellcheck --version
+  script:
+    - shellcheck *.sh
