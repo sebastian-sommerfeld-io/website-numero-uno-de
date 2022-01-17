@@ -110,7 +110,7 @@ pipeline {
                 sh "mv content/index.html target/content/index.html"
                 sh "mkdir -p target/content/assets"
                 sh "cp -a node_modules/reveal.js target/content/assets"
-                sh "cp -a content/images target/content"
+                // sh "cp -a content/images target/content"
             }
         }
 

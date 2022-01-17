@@ -26,7 +26,7 @@ mkdir -p "$TARGET_DIR"
 
 echo -e "$LOG_INFO Move files to target directory"
 mv "$SRC_DIR/index.html" "$TARGET_DIR/index.html"
-cp -a "$SRC_DIR/images" target/content
+#cp -a "$SRC_DIR/images" target/content
 
 echo -e "$LOG_INFO Starting local webserver (node module)"
 webserver 8888 "$TARGET_DIR"
