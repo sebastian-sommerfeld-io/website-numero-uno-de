@@ -23,6 +23,8 @@ pipeline {
 
     stages {
         stage("verify") {
+            // Adjust IntelliJ validations
+            // noinspection GroovyAssignabilityCheck
             parallel {
                 stage('info') {
                     steps {
@@ -83,6 +85,8 @@ pipeline {
         }
 
         stage("prepare") {
+            // Adjust IntelliJ validations
+            // noinspection GroovyAssignabilityCheck
             parallel {
                 stage("prepare::install-node-modules") {
                     steps {
