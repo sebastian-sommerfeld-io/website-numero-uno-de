@@ -9,8 +9,6 @@
     "docs/modules/*/partials/*",
     "docs/modules/*/partials/**",
 
-    "content/**",
-
     "resources/**",
 
     "src/cicd/**",

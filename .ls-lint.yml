@@ -1,0 +1,27 @@
+---
+ls:
+  .adoc: kebab-case | SCREAMING_SNAKE_CASE
+  .puml: kebab-case
+
+  .yml: kebab-case
+  .yaml: kebab-case
+  .json: kebab-case
+
+  .sh: kebab-case
+
+  .css: kebab-case
+  .html: kebab-case
+  .js: kebab-case
+
+  Dockerfile: PascalCase
+  Vagrantfile: PascalCase
+  Jenkinsfile: PascalCase
+
+  .gitignore: lowercase
+  .gitkeep: lowercase
+
+ignore:
+  - .idea
+  - .git
+  - node_modules
+  - target
