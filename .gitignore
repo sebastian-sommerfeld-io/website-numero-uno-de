@@ -5,3 +5,5 @@ logs
 *.log
 node_modules
 target
+*.pass
+*.user
