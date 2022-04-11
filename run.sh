@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file run-local.sh
+# @file run.sh
 # @brief Translate Asciidoc file into RevealJS page and run in local webserver.
 #
 # @description The script translates an Asciidoc file into a RevealJS page.
