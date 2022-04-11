@@ -1,6 +1,6 @@
 = Numero Uno
 // https://revealjs.com/themes/
-:revealjs_theme: night
+:revealjs_theme: black
 
 scusi@numero-uno.de
 
