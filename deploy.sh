@@ -13,7 +13,7 @@
 
 case $HOSTNAME in
 ("pegasus") echo -e "$LOG_INFO Script running on expected machine $HOSTNAME";;
-(*)         echo -e "$LOG_ERROR SCRIPT NOT RUNNING ON EXPECTED MACHINE !!!" && echo -e "$LOG_ERROR Exit" && exit;;
+(*)         echo -e "$LOG_ERROR SCRIPT NOT RUNNING ON EXPECTED MACHINE !!!" && echo -e "$LOG_ERROR Exit" && exit 0;;
 esac
 
 
