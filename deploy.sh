@@ -4,9 +4,17 @@
 #
 # @description The script deploys the generated HTML via FTP to the webspace. Use ``run.sh`` to generate HTML first.
 #
+# IMPORTANT: Run only in Vagrantbox ``pegasus``. Other machines cannot provide the necessary docker image.
+#
 # ==== Arguments
 #
 # The script does not accept any parameters.
+
+
+case $HOSTNAME in
+("pegasus") echo -e "$LOG_INFO Script running on expected machine $HOSTNAME";;
+(*)         echo -e "$LOG_ERROR SCRIPT NOT RUNNING ON EXPECTED MACHINE !!!" && echo -e "$LOG_ERROR Exit" && exit;;
+esac
 
 
 FTP_HOST="w00f8074.kasserver.com"
