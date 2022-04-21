@@ -29,7 +29,7 @@ linterDefinitions=(
 )
 for file in "${linterDefinitions[@]}"; do
   rm "$file"
-  curl -sL "https://raw.githubusercontent.com/sebastian-sommerfeld-io/assets/main/resources/linters/$file" -o "$file"
+  curl -sL "https://raw.githubusercontent.com/sebastian-sommerfeld-io/infrastructure/main/resources/common-assets/linters/$file" -o "$file"
   git add "$file"
 done
 
