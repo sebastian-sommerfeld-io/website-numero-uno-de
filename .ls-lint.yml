@@ -3,9 +3,10 @@ ls:
   .adoc: kebab-case | SCREAMING_SNAKE_CASE
   .puml: kebab-case
 
+  .json: kebab-case
+  .tf: kebab-case
   .yml: kebab-case
   .yaml: kebab-case
-  .json: kebab-case
 
   .sh: kebab-case
 
@@ -17,10 +18,13 @@ ls:
   Vagrantfile: PascalCase
   Jenkinsfile: PascalCase
 
+  .folderslint: lowercase
   .gitignore: lowercase
   .gitkeep: lowercase
+  .yamllint: lowercase
 
 ignore:
+  - .ls-lint.yml
   - .idea
   - .git
   - node_modules
