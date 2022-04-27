@@ -19,6 +19,7 @@
 MOUNT_POINT="/documents"
 TARGET_DIR="target/content"
 SRC_DIR="src/main"
+DOCKER_IMAGE="pegasus/website-tafelboy:dev"
 
 
 echo -e "$LOG_INFO Download latest linter definitions"
@@ -37,9 +38,9 @@ echo -e "$LOG_INFO -------------------------------------------------------------
 echo -e "$LOG_INFO Run linter containers"
 docker run -it --rm --volume "$(pwd):/data" --workdir "/data" cytopia/yamllint:latest .
 docker run -it --rm --volume "$(pwd):/data" --workdir "/data" koalaman/shellcheck:latest ./*.sh
-#docker run -i  --rm hadolint/hadolint < Dockerfile
+docker run -i  --rm hadolint/hadolint < Dockerfile
 docker run -it --rm --volume "$(pwd):/data" --workdir "/data" lslintorg/ls-lint:1.11.0
-docker run -i  --rm --volume "$(pwd):$(pwd)" --workdir "$(pwd)" pegasus/folderslint:latest folderslint .
+#docker run -i  --rm --volume "$(pwd):$(pwd)" --workdir "$(pwd)" pegasus/folderslint:latest folderslint .
 echo -e "$LOG_INFO ------------------------------------------------------------------------"
 
 echo -e "$LOG_INFO Build reveal-js pages"
@@ -52,7 +53,14 @@ mkdir -p "$TARGET_DIR"
 
 echo -e "$LOG_INFO Move files to target directory"
 mv "$SRC_DIR/index.html" "$TARGET_DIR/index.html"
-#cp -a "$SRC_DIR/images" "$TARGET_DIR"
+cp -a "$SRC_DIR/images" "$TARGET_DIR"
 
-echo -e "$LOG_INFO Starting local webserver (node module)"
-webserver 7080 "$TARGET_DIR"
+echo -e "$LOG_INFO Remove old versions of $DOCKER_IMAGE"
+docker image rm "$DOCKER_IMAGE"
+
+echo -e "$LOG_INFO Build Docker image $DOCKER_IMAGE"
+docker build -t "$DOCKER_IMAGE" .
+
+echo -e "$LOG_INFO Run Docker image"
+docker run --rm mwendler/figlet "    7888"
+docker run --rm -p 7888:80 "$DOCKER_IMAGE"
