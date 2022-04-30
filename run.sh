@@ -32,7 +32,7 @@ mkdir -p "$TARGET_DIR"
 
 echo -e "$LOG_INFO Move files to target directory"
 mv "$SRC_DIR/index.html" "$TARGET_DIR/index.html"
-cp -a "$SRC_DIR/images" "$TARGET_DIR"
+#cp -a "$SRC_DIR/images" "$TARGET_DIR"
 
 echo -e "$LOG_INFO Remove old versions of $DOCKER_IMAGE"
 docker image rm "$DOCKER_IMAGE"
