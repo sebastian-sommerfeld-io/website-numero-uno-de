@@ -27,5 +27,5 @@ docker run -it --rm --volume "$(pwd):/data" --workdir "/data" cytopia/yamllint:l
 docker run -it --rm --volume "$(pwd):/data" --workdir "/data" koalaman/shellcheck:latest ./*.sh
 docker run -i  --rm hadolint/hadolint < Dockerfile
 docker run -it --rm --volume "$(pwd):/data" --workdir "/data" lslintorg/ls-lint:1.11.0
-docker run -i  --rm --volume "$(pwd):$(pwd)" --workdir "$(pwd)" pegasus/folderslint:latest folderslint .
+docker run -it --rm --volume "$(pwd):$(pwd)" --workdir "$(pwd)" pegasus/folderslint:latest folderslint .
 echo -e "$LOG_INFO ------------------------------------------------------------------------"
