@@ -1,9 +1,0 @@
-= Secrets
-
-Put FILENAME.token / FILENAME.user / FILENAME.passwd files here. Each file should contain the user/password/token only (no new-line at the end of the file).
-
-CAUTION: TODO ... replace with something better (get secrets from bitwarden)
-
-Expected files:
-* ftp.user
-* ftp.pass

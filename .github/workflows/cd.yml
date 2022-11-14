@@ -1,0 +1,88 @@
+---
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+  schedule:
+    - cron: '0 0 * * *' # https://crontab.guru/#0_0_*_*_*
+
+permissions:
+  contents: read
+
+jobs:
+  check-links-in-adoc-files:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install asciidoc-link-check
+        run: npm install --location=global asciidoc-link-check@1.0.15
+      - name: Validate links in all adoc files
+        run: find . -name '*.adoc' -exec asciidoc-link-check -c .adoc-links.json -p {} \;
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    needs: check-links-in-adoc-files
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - run: pwd
+      - run: ls -alF
+
+      - name: Build HTML pages
+        run: |
+          SRC_DIR="src/main"
+          TARGET_DIR="target/content"
+
+          docker run --rm --volume "$(pwd):/documents" asciidoctor/docker-asciidoctor:latest \
+            asciidoctor-revealjs -a revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2 "$SRC_DIR/index.adoc"
+
+          rm -rf "$TARGET_DIR"
+          mkdir -p "$TARGET_DIR"
+
+          mv "$SRC_DIR/index.html" "$TARGET_DIR/index.html"
+          cp -a "$SRC_DIR/images" "$TARGET_DIR"
+
+      - name: Deploy via FTP
+        run: |
+          FTP_HOST="w00f8074.kasserver.com"
+          TARGET_DIR="target/content"
+
+          echo "Change to directory containing the built Antora pages"
+          cd "$TARGET_DIR" || exit
+          ls -alF
+
+          echo "Upload via FTP"
+          docker run -i --rm \
+            --volume "$(pwd):$(pwd)" \
+            --workdir "$(pwd)" \
+            sommerfeldio/ftp-client:latest ncftpput -R -v -u "${{ secrets.FTP_USER }}" -p "${{ secrets.FTP_PASS }}" "$FTP_HOST" / *
+
+  on-failure:
+    runs-on: ubuntu-latest
+    needs: ['check-links-in-adoc-files', 'build-and-deploy']
+    if: failure()
+
+    steps:
+      - name: Send Pipeline Status to Google Chat
+        if: always()
+        uses: Co-qn/google-chat-notification@releases/v1
+        with:
+          name: ${{ github.workflow }}
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          status: failure

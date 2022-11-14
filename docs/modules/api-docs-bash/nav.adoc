@@ -1,2 +1,0 @@
-* xref:index.adoc[API Docs: Bash Scripts]
-** xref:run-local.adoc[run-local.sh]

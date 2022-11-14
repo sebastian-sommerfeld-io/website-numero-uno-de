@@ -1,0 +1,9 @@
+Sebastian Sommerfeld <sebastian@sommerfeld.io>
+:project-name: website-numero-uno-de
+:url-project: https://github.com/sebastian-sommerfeld-io/{project-name}
+:github-actions-url: {url-project}/actions/workflows
+:job-ci: ci.yml
+:job-cd: cd.yml
+:job-release: release.yml
+:job-generate-docs: auto-generate-docs.yml
+:badge: badge.svg
