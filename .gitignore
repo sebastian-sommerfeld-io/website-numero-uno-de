@@ -1,9 +1,18 @@
-.gradle
 .idea
-.vagrant
-logs
-*.log
-node_modules
 target
+node_modules
+.target
+.vagrant
+*.log
+
+*.lock
+
+# terraform
+.terraform
+.terraform.lock*
+*.tfstate*
+
+# secrets
+*.token
 *.pass
 *.user
