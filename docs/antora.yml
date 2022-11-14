@@ -1,7 +1,7 @@
 ---
 name: website-numero-uno-docs
 title: Website Numero Uno Docs
-version: main
+version: v0.1.0
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
