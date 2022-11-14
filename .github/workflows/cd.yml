@@ -29,7 +29,7 @@ jobs:
       - name: Install asciidoc-link-check
         run: npm install --location=global asciidoc-link-check@1.0.15
       - name: Validate links in all adoc files
-        run: find . -name '*.adoc' -exec asciidoc-link-check -c .adoc-links.json -p {} \;
+        run: find . -name '*.adoc' -exec asciidoc-link-check -c .a doc-links.json -p {} \;
 
   build-and-deploy:
     runs-on: ubuntu-latest

@@ -19,7 +19,7 @@
 MOUNT_POINT="/documents"
 TARGET_DIR="target/content"
 SRC_DIR="src/main"
-DOCKER_IMAGE="pegasus/website-tafelboy:dev"
+DOCKER_IMAGE="local/website-tafelboy:dev"
 
 
 echo -e "$LOG_INFO Build reveal-js pages"
