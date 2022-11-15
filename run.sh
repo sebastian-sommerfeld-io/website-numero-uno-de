@@ -12,7 +12,7 @@
 #
 # The script does not accept any parameters.
 #
-# ==== See also
+# === See
 #
 # * link:https://docs.asciidoctor.org/reveal.js-converter/latest[Asciidoctor reveal.js Documentation]
 
