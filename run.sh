@@ -8,7 +8,7 @@
 # | ------------------------ | ---- | -------- |
 # |  webserver (node module) | 7080 | http     |
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 #
