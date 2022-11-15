@@ -1,0 +1,1 @@
+* xref:AUTO-GENERATED:bash-docs/index.adoc[]
