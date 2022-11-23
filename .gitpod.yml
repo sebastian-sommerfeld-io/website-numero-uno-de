@@ -2,6 +2,8 @@
 tasks:
   - name: Install yamllint
     init: sudo apt-get install -y yamllint
+  - name: Install jarvis
+    init: curl https://raw.githubusercontent.com/sebastian-sommerfeld-io/jarvis/main/src/main/install.sh | bash -
 
 vscode:
   extensions:
