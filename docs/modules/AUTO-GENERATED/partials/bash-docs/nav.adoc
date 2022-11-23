@@ -1,1 +1,1 @@
-* xref:AUTO-GENERATED:bash-docs/run-sh.adoc[run-sh.adoc]
+* xref:AUTO-GENERATED:bash-docs/run-sh.adoc[run.sh]
