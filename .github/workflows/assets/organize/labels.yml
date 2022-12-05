@@ -1,0 +1,12 @@
+- name: bug
+  color: d73a4a
+  description: Something is not working
+- name: security
+  color: cd3ad7
+  description: CVEs, code scan violations, etc.
+- name: blocked / waiting
+  color: d76e3a
+  description: Issues that are blocked or waiting for something
+- name: cancelled
+  color: 726b73
+  description: No further actions, Issues should be closed
