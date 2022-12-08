@@ -18,7 +18,7 @@ on:
     paths:
       - .github/workflows/organize-auto-close-issues.yml
   schedule:
-    - cron: '40 6 * * 1' # https://crontab.guru/#40_6_*_*_1
+    - cron: '0 */6 * * *' # https://crontab.guru/#0_*/6_*_*_*
 
 permissions:
   contents: read
