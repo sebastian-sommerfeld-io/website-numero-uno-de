@@ -29,6 +29,7 @@ jobs:
   add-to-project:
     name: Add to project
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Add to project (issues and PRs)
         uses: actions/add-to-project@main
@@ -39,6 +40,7 @@ jobs:
   assign-to-user:
     name: Assign to user
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Assign issue to user when moved into column
         uses: pozil/auto-assign-issue@v1
