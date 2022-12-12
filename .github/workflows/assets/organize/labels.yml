@@ -22,3 +22,6 @@
 - name: cancelled
   color: 726b73
   description: No further actions, Issues should be closed
+- name: dependencies
+  color: 0366d6
+  description: Pull requests that update a dependency file (from Dependabot)
