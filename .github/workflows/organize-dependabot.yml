@@ -32,7 +32,7 @@ jobs:
           label: dependencies
           assignee: ${{ github.actor }}
         run: |
-          pr_ids="$(gh pr list --repo "$GITHUB_REPOSITORY" --label "$label" --json number --jq '.[].number')"
+          pr_ids="$(gh pr list --repo "$GITHUB_REPOSITORY" --search 'no:assignee label:$label' --json number --jq '.[].number')"
           for id in $pr_ids; do
             gh pr edit "$id" --repo "$GITHUB_REPOSITORY" --add-assignee "$assignee"
           done
