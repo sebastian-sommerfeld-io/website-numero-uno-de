@@ -12,6 +12,11 @@ name: "Organize: Dependabot Pull Requests"
 # +-------------------------------------------+
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/organize-dependabot.yml
   schedule:
     - cron: '0 12 * * *' # https://crontab.guru
 
@@ -22,7 +27,7 @@ permissions:
 
 jobs:
   assign-user:
-    name: Assign PRs with label 'dependencies'
+    name: Assign PRs with label 'dependencies' to user
     runs-on: ubuntu-latest
     steps:
       - name: Get PR and assign user (limited to 'dependencies' by github cli)
@@ -32,8 +37,11 @@ jobs:
           label: dependencies
           assignee: ${{ github.actor }}
         run: |
-          pr_ids="$(gh pr list --repo "$GITHUB_REPOSITORY" --search 'no:assignee label:$label' --json number --jq '.[].number')"
+          echo "Current Date and Time = $(date +'%Y-%m-%d .. %H:%M:%S')"
+          echo "Current Repo = $GITHUB_REPOSITORY"
+          pr_ids="$(gh pr list --repo "$GITHUB_REPOSITORY" --search "no:assignee label:$label" --json number --jq '.[].number')"
           for id in $pr_ids; do
+            echo "Update Pull Request with ID = $id"
             gh pr edit "$id" --repo "$GITHUB_REPOSITORY" --add-assignee "$assignee"
           done
 
