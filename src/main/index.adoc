@@ -16,7 +16,7 @@ scusi@numero-uno.de
 == #4 - Sitze immer gegenüber oder über Eck
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
-== #5 - ???
+== #5 - tbd
 //Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
 
 == #6 - Ein Bier sollte da Klarheit bringen
