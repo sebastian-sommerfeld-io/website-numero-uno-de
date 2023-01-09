@@ -13,7 +13,7 @@ name: Security Scans
 
 on:
   schedule:
-    - cron: '0 1 * * 1' # https://crontab.guru
+    - cron: '30 0 * * *' # https://crontab.guru
 
 permissions:
   contents: read
