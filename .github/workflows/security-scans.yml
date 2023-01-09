@@ -1,6 +1,16 @@
 ---
 name: Security Scans
 
+# +-------------------------------------------+
+# |                                           |
+# |    DO NOT EDIT DIRECTLY !!!!!             |
+# |                                           |
+# |    File is managed by terraform.          |
+# |    Update file in the configs repo so     |
+# |    you can apply changes to all repos.    |
+# |                                           |
+# +-------------------------------------------+
+
 on:
   schedule:
     - cron: '0 1 * * 1' # https://crontab.guru
@@ -23,10 +33,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: sommerfeldio/website:latest
-          args: --file=src/main/Dockerfile
-      - name: Debug
-        run: pwd && ls -alF
+          image: sommerfeldio/website-numero-uno-de:latest
+          args: --file=Dockerfile
       - name: Upload snyk result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
